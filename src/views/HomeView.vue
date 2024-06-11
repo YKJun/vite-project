@@ -1,5 +1,4 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
 import {  onMounted } from 'vue'
 import { inject } from 'vue'
 const $axios = inject('$axios')
@@ -19,9 +18,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <div>home</div>
 </template>
 
 <style scoped lang="scss">
