@@ -3,7 +3,9 @@
 </script>
 
 <template>
-<div></div>
+<div class="login-box">
+
+</div>
 </template>
 
 <style scoped lang="scss">
