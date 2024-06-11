@@ -17,6 +17,15 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
+  css: {
+    // 配置 CSS 预处理器
+    preprocessorOptions: {
+      scss: {
+        // 这里可以添加更多的Sass配置选项
+        additionalData: `$injectedColor: orange;`
+      }
+    }
+  },
   server: {
     proxy: {
       // 选项写法
