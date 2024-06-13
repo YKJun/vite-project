@@ -1,19 +1,30 @@
 <script setup>
-import { reactive } from 'vue'
+import { inject, reactive } from 'vue'
+import {  useRouter } from 'vue-router'
 
+const router = useRouter()
+const $axios = inject('$axios')
 const form = reactive({
   name: '',
   password:'',
-  region: '',
-  date1: '',
-  date2: '',
-  delivery: false,
-  type: [],
-  resource: '',
-  desc: '',
 })
 
 const onSubmit = () => {
+  $axios.post('/api/user/login',{username:form.name,password:form.password})
+    .then(response => {
+      // 处理响应数据
+      console.log(response.data)
+      if(response.data.code === 200){
+        router.push('/')
+      }else if(response.data.code === -1){
+        router.push('/register')
+      }
+
+    })
+    .catch(error => {
+      // 处理请求错误
+      console.log(error)
+    });
   console.log('submit!')
 }
 </script>
@@ -24,7 +35,7 @@ const onSubmit = () => {
     <el-form-item label="用户名">
       <el-input v-model="form.name" />
     </el-form-item>
-    <el-form-item label="密码">
+    <el-form-item label="密码" type="password">
       <el-input v-model="form.password" />
     </el-form-item>
     <el-form-item>
